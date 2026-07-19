@@ -83,8 +83,8 @@ h3 {
     justify-content:center;
     align-items:center;
 
-    width:45px;
-    height:45px;
+    width:32px;
+    height:32px;
 
     border-radius:50%;
 
@@ -92,7 +92,7 @@ h3 {
     color:white;
 
     font-weight:bold;
-    font-size:18px;
+    font-size:11px;
 
     margin:5px;
 
