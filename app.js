@@ -1,0 +1,1 @@
+console.log("Lotto Big Data Lab 시작");
