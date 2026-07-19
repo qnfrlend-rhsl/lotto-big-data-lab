@@ -83,7 +83,15 @@ function analyze45Average(){
     if(checkLottoCondition(lottoSet)){
         setCount++;
         recommendText += 
-        `${setCount}세트 : ${lottoSet.join("  ")}<br>`;
+        `
+        ${setCount}세트 :
+        ${lottoSet.map(num => 
+        `<span class="lotto-ball ball-${getBallColor(num)}">
+            ${String(num).padStart(2,"0")}
+            </span>`
+        ).join("")}
+        <br><br>
+        `;
     }
     tryCount++;
     }
@@ -144,6 +152,30 @@ function checkLottoCondition(numbers){
     }
     return true;
 }
+
+// ===============================
+// 로또볼 색상 구분
+// ===============================
+function getBallColor(num){
+
+    if(num <= 10){
+        return "yellow";
+    }
+
+    if(num <= 20){
+        return "blue";
+    }
+
+    if(num <= 30){
+        return "red";
+    }
+
+    if(num <= 40){
+        return "gray";
+    }
+
+    return "green";
+}
 ///////////////////////////////////////////////////////////////// 최근 45회 평균 번호 생성코드 끝
 ///////////////////////////////////////////////////////////////// 최근 45회 평균 이상 번호 생성코드 시작
 
@@ -195,7 +227,15 @@ function analyze45High(){
         if(checkLottoCondition(lottoSet)){
             setCount++;
             recommendText += 
-            `${setCount}세트 : ${lottoSet.join("  ")}<br>`;
+            `
+            ${setCount}세트 :
+            ${lottoSet.map(num => 
+            `<span class="lotto-ball ball-${getBallColor(num)}">
+            ${String(num).padStart(2,"0")}
+            </span>`
+            ).join("")}
+            <br><br>
+            `;
         }
         tryCount++;
     }
@@ -215,6 +255,29 @@ function analyze45High(){
     ${recommendText}
     </div>
     `;
+}
+// ===============================
+// 로또볼 색상 구분
+// ===============================
+function getBallColor(num){
+
+    if(num <= 10){
+        return "yellow";
+    }
+
+    if(num <= 20){
+        return "blue";
+    }
+
+    if(num <= 30){
+        return "red";
+    }
+
+    if(num <= 40){
+        return "gray";
+    }
+
+    return "green";
 }
 ///////////////////////////////////////////////////////////////// 최근 45회 평균 이상 번호 생성코드 끝
 ///////////////////////////////////////////////////////////////// 최근 45회 평균 이하 번호 생성코드 시작
@@ -263,7 +326,15 @@ function analyze45Low(){
         if(checkLottoCondition(lottoSet)){
             setCount++;
             recommendText += 
-            `${setCount}세트 : ${lottoSet.join("  ")}<br>`;
+           `
+           ${setCount}세트 :
+           ${lottoSet.map(num => 
+           `<span class="lotto-ball ball-${getBallColor(num)}">
+            ${String(num).padStart(2,"0")}
+            </span>`
+           ).join("")}
+           <br><br>
+           `;
         }
         tryCount++;
     }
@@ -283,6 +354,29 @@ function analyze45Low(){
     ${recommendText}
     </div>
     `;
+}
+// ===============================
+// 로또볼 색상 구분
+// ===============================
+function getBallColor(num){
+
+    if(num <= 10){
+        return "yellow";
+    }
+
+    if(num <= 20){
+        return "blue";
+    }
+
+    if(num <= 30){
+        return "red";
+    }
+
+    if(num <= 40){
+        return "gray";
+    }
+
+    return "green";
 }
 
 

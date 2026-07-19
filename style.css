@@ -77,3 +77,45 @@ h3 {
     width:120px;
     height:auto;
 }
+
+.lotto-ball{
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#f5c400;
+    color:white;
+
+    font-weight:bold;
+    font-size:18px;
+
+    margin:5px;
+
+    box-shadow:
+    0 3px 6px rgba(0,0,0,0.3);
+}
+
+.ball-yellow{
+    background:#fbc400;
+}
+
+.ball-blue{
+    background:#1877d2;
+}
+
+.ball-red{
+    background:#e53935;
+}
+
+.ball-gray{
+    background:#777;
+}
+
+.ball-green{
+    background:#2e8b57;
+}
