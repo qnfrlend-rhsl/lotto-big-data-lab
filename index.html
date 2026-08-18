@@ -2,54 +2,101 @@
 <html lang="ko">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>로또 빅데이터 연구소</title>
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="images/lotto-icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>로또 빅데이터 연구소</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/lotto-icon.png">
 </head>
 
-<header class="logo-header">
-    <img src="images/lotto-logo.png" alt="로또 분석 시스템 로고">
+<body>
+
+    <!-- ===============================
+         상단 로고 영역
+    ================================ -->
+    <header class="logo-header">
+
+        <img
+            src="images/lotto-logo.png"
+            alt="로또 빅데이터 연구소 로고"
+        >
+
         <h1>로또 빅데이터 연구소</h1>
 
-</header>
+    </header>
 
-<body>
-<div class="container">
-<h3>
-Lotto Big Data Lab
-</h3>
-<div id="info">
-데이터 불러오는 중...
-</div>
-<div class="menu">
-<button onclick="analyze45Average()">
-최근 45회 평균 번호
-</button>
 
-<button onclick="analyze45High()">
-최근 45회 평균 이상 번호
-</button>
+    <!-- ===============================
+         메인 컨텐츠
+    ================================ -->
+    <main class="container">
 
-<button onclick="analyze45Low()">
-최근 45회 평균 이하 번호
-</button>
+        <h3>
+            LOTTO BIG DATA LAB
+        </h3>
 
-<button onclick="analyzeAllHot()">
-전체 최다 출현 번호
-</button>
 
-<button onclick="analyzeAllAverage()">
-전체 평균 출현 번호
-</button>
+        <!-- ===============================
+             데이터 상태
+        ================================ -->
+        <section id="info">
 
-</div>
+            데이터 불러오는 중...
 
-<div id="result">
-분석 결과 표시 영역
-</div>
-</div>
-<script src="app.js"></script>
+        </section>
+
+
+        <!-- ===============================
+             분석 메뉴
+        ================================ -->
+        <section class="menu">
+
+            <button onclick="analyze45Average()">
+                📊 최근 45회 평균 번호
+            </button>
+
+            <button onclick="analyze45High()">
+                🔥 최근 45회 평균 이상
+            </button>
+
+            <button onclick="analyze45Low()">
+                📉 최근 45회 평균 이하
+            </button>
+
+            <button onclick="analyzeAllHot()">
+                🔥 전체 최다 출현 번호
+            </button>
+
+            <button onclick="analyzeAllAverage()">
+                📈 전체 평균 출현 번호
+            </button>
+
+        </section>
+
+
+        <!-- ===============================
+             분석 결과
+        ================================ -->
+        <section id="result">
+
+            <h3>🎯 분석 결과</h3>
+
+            <p>
+                원하는 분석 메뉴를 선택해주세요.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- ===============================
+         JavaScript
+    ================================ -->
+    <script src="app.js"></script>
+
 </body>
+
 </html>
