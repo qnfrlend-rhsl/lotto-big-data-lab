@@ -67,7 +67,7 @@ function analyze45Average(){
             result.push(`${i}번 (${count[i]}회)`);
         }*/
 
-        if(count[i] >= 5 && count[i] <= 6){
+        if(count[i] >= 3 && count[i] <= 6){
           result.push(`${i}번 (${count[i]}회)`);
           averageNumbers.push(i);
        }
@@ -379,10 +379,6 @@ function getBallColor(num){
     return "green";
 }
 
-
-
-
-
 function analyzeAllHot(){
     let count = {};
     for(let i=1;i<=45;i++){
@@ -416,10 +412,6 @@ function analyzeAllHot(){
     ${result.join("<br>")}
     `;
 }
-
-
-
-
 
 function analyzeAllAverage(){
     let count = {};
