@@ -116,6 +116,256 @@ function analyze45Average(){
     `;
 }
 
+// =================================================
+// 1회부터 현재까지 전체 평균 이하 번호
+// =================================================
+
+function analyzeAllLow(){
+
+    const allData = lottoData;
+
+    let count = {};
+
+    for(let i=1;i<=45;i++){
+        count[i] = 0;
+    }
+
+    allData.forEach(row => {
+
+        for(let i=1;i<=6;i++){
+
+            let num = Number(
+                row["번호"+i] ||
+                row[i] ||
+                row[String(i)]
+            );
+
+            if(num >= 1 && num <=45){
+                count[num]++;
+            }
+
+        }
+
+    });
+
+    let total = 0;
+
+    for(let i=1;i<=45;i++){
+        total += count[i];
+    }
+
+    let avg = total / 45;
+
+    let result = [];
+    let lowNumbers = [];
+
+    for(let i=1;i<=45;i++){
+
+        if(count[i] < avg){
+
+            result.push(
+                `${i}번 (${count[i]}회)`
+            );
+
+            lowNumbers.push(i);
+        }
+
+    }
+
+    let recommendText = "";
+
+    let setCount = 0;
+    let tryCount = 0;
+
+    while(setCount < 5 && tryCount < 1000){
+
+        let lottoSet = makeLottoSet(lowNumbers);
+
+        if(
+            lottoSet.length === 6 &&
+            checkLottoCondition(lottoSet)
+        ){
+
+            setCount++;
+
+            recommendText += `
+
+                ${setCount}세트 :
+
+                ${lottoSet.map(num =>
+
+                    `<span class="lotto-ball ball-${getBallColor(num)}">
+                        ${String(num).padStart(2,"0")}
+                    </span>`
+
+                ).join("")}
+
+                <br><br>
+            `;
+        }
+
+        tryCount++;
+    }
+
+    if(setCount < 5){
+
+        recommendText +=
+        `조건을 만족하는 번호 조합 생성 실패 (${setCount}세트 생성)<br>`;
+
+    }
+
+    document.getElementById("result").innerHTML = `
+
+        <h3>📉 1회부터 현재까지 전체 평균 이하 번호</h3>
+
+        전체 데이터 : ${allData.length}회<br>
+        평균 출현 횟수 : ${avg.toFixed(2)}회
+
+        <hr>
+
+        ${
+            result.length
+            ? result.join("<br>")
+            : "해당 번호 없음"
+        }
+
+        <hr>
+
+        <h3>🎯 추천 번호 5세트</h3>
+
+        <div id="recommendResult">
+            ${recommendText}
+        </div>
+
+    `;
+}
+
+// =================================================
+// 1회부터 현재까지 전체 평균 번호
+// =================================================
+
+// =================================================
+// 1회부터 현재까지 전체 평균 번호
+// =================================================
+
+function analyzeAllAverageNumbers(){
+
+    const allData = lottoData;
+
+    let count = {};
+
+    for(let i = 1; i <= 45; i++){
+        count[i] = 0;
+    }
+
+    allData.forEach(row => {
+
+        for(let i = 1; i <= 6; i++){
+
+            let num = Number(
+                row["번호" + i] ||
+                row[i] ||
+                row[String(i)]
+            );
+
+            if(num >= 1 && num <= 45){
+                count[num]++;
+            }
+
+        }
+
+    });
+
+    let total = 0;
+
+    for(let i = 1; i <= 45; i++){
+        total += count[i];
+    }
+
+    let avg = total / 45;
+
+    let result = [];
+    let averageNumbers = [];
+
+    // 전체 평균 근처 번호
+    for(let i = 1; i <= 45; i++){
+
+        if(Math.abs(count[i] - avg) <= 5){
+
+            result.push(
+                `${i}번 (${count[i]}회)`
+            );
+
+            averageNumbers.push(i);
+
+        }
+
+    }
+
+    // 추천번호 5세트 생성
+    let recommendText = "";
+    let setCount = 0;
+    let tryCount = 0;
+
+    while(setCount < 5 && tryCount < 1000){
+
+        let lottoSet = makeLottoSet(averageNumbers);
+
+        if(
+            lottoSet.length === 6 &&
+            checkLottoCondition(lottoSet)
+        ){
+
+            setCount++;
+
+            recommendText += `
+            ${setCount}세트 :
+            ${lottoSet.map(num =>
+                `<span class="lotto-ball ball-${getBallColor(num)}">
+                    ${String(num).padStart(2,"0")}
+                </span>`
+            ).join("")}
+            <br><br>
+            `;
+
+        }
+
+        tryCount++;
+    }
+
+    if(setCount < 5){
+
+        recommendText +=
+        `조건을 만족하는 번호 조합 생성 실패 (${setCount}세트 생성)<br>`;
+
+    }
+
+    document.getElementById("result").innerHTML = `
+
+        <h3>📊 1회부터 현재까지 전체 평균 번호</h3>
+
+        전체 데이터 : ${allData.length}회<br>
+        평균 출현 횟수 : ${avg.toFixed(2)}회
+
+        <hr>
+
+        ${
+            result.length
+            ? result.join("<br>")
+            : "평균 근처 번호 없음"
+        }
+
+        <hr>
+
+        <h3>🎯 추천 번호 5세트</h3>
+
+        <div id="recommendResult">
+            ${recommendText}
+        </div>
+
+    `;
+}
+
 // ===============================
 // 평균권 번호에서 6개 추출
 // ===============================
@@ -355,6 +605,131 @@ function analyze45Low(){
     </div>
     `;
 }
+
+// =================================================
+// 1회부터 현재까지 전체 평균 이하 번호
+// =================================================
+
+function analyzeAllLow(){
+
+    const allData = lottoData;
+
+    let count = {};
+
+    for(let i=1;i<=45;i++){
+        count[i] = 0;
+    }
+
+    allData.forEach(row => {
+
+        for(let i=1;i<=6;i++){
+
+            let num = Number(
+                row["번호"+i] ||
+                row[i] ||
+                row[String(i)]
+            );
+
+            if(num >= 1 && num <=45){
+                count[num]++;
+            }
+
+        }
+
+    });
+
+    let total = 0;
+
+    for(let i=1;i<=45;i++){
+        total += count[i];
+    }
+
+    let avg = total / 45;
+
+    let result = [];
+    let lowNumbers = [];
+
+    for(let i=1;i<=45;i++){
+
+        if(count[i] < avg){
+
+            result.push(
+                `${i}번 (${count[i]}회)`
+            );
+
+            lowNumbers.push(i);
+        }
+
+    }
+
+    let recommendText = "";
+
+    let setCount = 0;
+    let tryCount = 0;
+
+    while(setCount < 5 && tryCount < 1000){
+
+        let lottoSet = makeLottoSet(lowNumbers);
+
+        if(
+            lottoSet.length === 6 &&
+            checkLottoCondition(lottoSet)
+        ){
+
+            setCount++;
+
+            recommendText += `
+
+                ${setCount}세트 :
+
+                ${lottoSet.map(num =>
+
+                    `<span class="lotto-ball ball-${getBallColor(num)}">
+                        ${String(num).padStart(2,"0")}
+                    </span>`
+
+                ).join("")}
+
+                <br><br>
+            `;
+        }
+
+        tryCount++;
+    }
+
+    if(setCount < 5){
+
+        recommendText +=
+        `조건을 만족하는 번호 조합 생성 실패 (${setCount}세트 생성)<br>`;
+
+    }
+
+    document.getElementById("result").innerHTML = `
+
+        <h3>📉 1회부터 현재까지 전체 평균 이하 번호</h3>
+
+        전체 데이터 : ${allData.length}회<br>
+        평균 출현 횟수 : ${avg.toFixed(2)}회
+
+        <hr>
+
+        ${
+            result.length
+            ? result.join("<br>")
+            : "해당 번호 없음"
+        }
+
+        <hr>
+
+        <h3>🎯 추천 번호 5세트</h3>
+
+        <div id="recommendResult">
+            ${recommendText}
+        </div>
+
+    `;
+}
+
 // ===============================
 // 로또볼 색상 구분
 // ===============================
@@ -448,5 +823,127 @@ function analyzeAllAverage(){
     평균 출현 횟수 : ${avg.toFixed(2)}회
     <hr>
     ${result.length ? result.join("<br>") : "평균 근처 번호 없음"}
+    `;
+}
+
+// =================================================
+// 1회부터 현재까지 전체 평균 이상 번호
+// =================================================
+
+function analyzeAllHigh(){
+
+    const allData = lottoData;
+
+    let count = {};
+
+    for(let i = 1; i <= 45; i++){
+        count[i] = 0;
+    }
+
+    allData.forEach(row => {
+
+        for(let i = 1; i <= 6; i++){
+
+            let num = Number(
+                row["번호" + i] ||
+                row[i] ||
+                row[String(i)]
+            );
+
+            if(num >= 1 && num <= 45){
+                count[num]++;
+            }
+
+        }
+
+    });
+
+    let total = 0;
+
+    for(let i = 1; i <= 45; i++){
+        total += count[i];
+    }
+
+    let avg = total / 45;
+
+    let result = [];
+    let highNumbers = [];
+
+    // 전체 평균 이상 번호
+    for(let i = 1; i <= 45; i++){
+
+        if(count[i] > avg){
+
+            result.push(
+                `${i}번 (${count[i]}회)`
+            );
+
+            highNumbers.push(i);
+
+        }
+
+    }
+
+    // 추천번호 5세트 생성
+    let recommendText = "";
+    let setCount = 0;
+    let tryCount = 0;
+
+    while(setCount < 5 && tryCount < 1000){
+
+        let lottoSet = makeLottoSet(highNumbers);
+
+        if(
+            lottoSet.length === 6 &&
+            checkLottoCondition(lottoSet)
+        ){
+
+            setCount++;
+
+            recommendText += `
+            ${setCount}세트 :
+            ${lottoSet.map(num =>
+                `<span class="lotto-ball ball-${getBallColor(num)}">
+                    ${String(num).padStart(2,"0")}
+                </span>`
+            ).join("")}
+            <br><br>
+            `;
+
+        }
+
+        tryCount++;
+    }
+
+    if(setCount < 5){
+
+        recommendText +=
+        `조건을 만족하는 번호 조합 생성 실패 (${setCount}세트 생성)<br>`;
+
+    }
+
+    document.getElementById("result").innerHTML = `
+
+        <h3>🔥 1회부터 현재까지 전체 평균 이상 번호</h3>
+
+        전체 데이터 : ${allData.length}회<br>
+        평균 출현 횟수 : ${avg.toFixed(2)}회
+
+        <hr>
+
+        ${
+            result.length
+            ? result.join("<br>")
+            : "해당 번호 없음"
+        }
+
+        <hr>
+
+        <h3>🎯 추천 번호 5세트</h3>
+
+        <div id="recommendResult">
+            ${recommendText}
+        </div>
+
     `;
 }

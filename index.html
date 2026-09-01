@@ -34,7 +34,7 @@
     <main class="container">
 
         <h3>
-            LOTTO BIG DATA LAB
+            1회부터 현재까지 통합 조합한 데이터 제공
         </h3>
 
 
@@ -51,30 +51,61 @@
         <!-- ===============================
              분석 메뉴
         ================================ -->
-        <section class="menu">
+<section class="menu">
 
-            <button onclick="analyze45Average()">
-                📊 최근 45회 평균 번호
-            </button>
+    <!-- ===============================
+         최근 45회 분석
+    ================================ -->
 
-            <button onclick="analyze45High()">
-                🔥 최근 45회 평균 이상
-            </button>
+    <h3>📌 최근 45회 분석</h3>
 
-            <button onclick="analyze45Low()">
-                📉 최근 45회 평균 이하
-            </button>
+    <button onclick="analyze45Average()">
+        📊 최근 45회 평균 번호
+    </button>
 
-            <button onclick="analyzeAllHot()">
-                🔥 전체 최다 출현 번호
-            </button>
+    <button onclick="analyze45High()">
+        🔥 최근 45회 평균 이상
+    </button>
 
-            <button onclick="analyzeAllAverage()">
-                📈 전체 평균 출현 번호
-            </button>
+    <button onclick="analyze45Low()">
+        📉 최근 45회 평균 이하
+    </button>
+<br><br>
 
-        </section>
+    <!-- ===============================
+         전체 회차 분석
+    ================================ -->
 
+    <h3>📌 전체 회차 분석</h3>
+
+    <button onclick="analyzeAllAverageNumbers()">
+        📊 1회~현재 평균 번호
+    </button>
+
+    <button onclick="analyzeAllHigh()">
+        🔥 1회~현재 평균 이상
+    </button>
+
+    <button onclick="analyzeAllLow()">
+        📉 1회~현재 평균 이하
+    </button>
+<br><br>
+
+    <!-- ===============================
+         전체 통계
+    ================================ -->
+
+    <h3>📌 전체 통계</h3>
+
+    <button onclick="analyzeAllHot()">
+        🔥 전체 최다 출현 번호
+    </button>
+
+    <button onclick="analyzeAllAverage()">
+        📈 전체 평균 출현 번호
+    </button>
+
+</section>
 
         <!-- ===============================
              분석 결과
