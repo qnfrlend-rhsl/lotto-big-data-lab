@@ -947,3 +947,26 @@ function analyzeAllHigh(){
 
     `;
 }
+
+/* =================================================
+   우동폰 광고 팝업
+================================================= */
+
+// 광고 팝업 닫기
+function closeAdPopup(){
+
+    const popup = document.getElementById("adPopup");
+
+    if(popup){
+        popup.style.display = "none";
+    }
+
+}
+
+
+// 우동폰 바로가기
+function goUdongpon(){
+
+    window.location.href = "https://rhsl-udongpon-template.netlify.app/";
+
+}
