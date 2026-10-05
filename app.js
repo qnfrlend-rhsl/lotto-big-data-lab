@@ -952,8 +952,17 @@ function analyzeAllHigh(){
    우동폰 광고 팝업
 ================================================= */
 
+// 처음 4초 동안은 팝업을 닫을 수 없음
+let adCanClose = false;
+
+
 // 광고 팝업 닫기
 function closeAdPopup(){
+
+    // 4초 전에는 닫히지 않음
+    if(!adCanClose){
+        return;
+    }
 
     const popup = document.getElementById("adPopup");
 
@@ -962,6 +971,14 @@ function closeAdPopup(){
     }
 
 }
+
+
+// 접속 후 4초가 지나면 닫기 가능
+setTimeout(function(){
+
+    adCanClose = true;
+
+}, 10000);
 
 
 // 우동폰 바로가기
