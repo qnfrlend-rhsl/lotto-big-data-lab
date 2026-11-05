@@ -978,7 +978,7 @@ setTimeout(function(){
 
     adCanClose = true;
 
-}, 10000);
+}, 4000);
 
 
 // 우동폰 바로가기
